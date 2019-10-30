@@ -30,6 +30,7 @@
 >- seropp.estimateGas
  
 ##### seropp.init
+
   It must be inited before invoke other interface.
   
   ```javascript
@@ -67,8 +68,11 @@ const dapp = {
   >- `gasPrice` Price of gas
 
   #### Usage
+  
   - **seropp.accountList**
+  
 Return all wallet account
+
   ```
   seropp.accountList(function(accounts){
       console.log(accounts);
@@ -88,7 +92,9 @@ Return all wallet account
   ```
 
   - **seropp.accountDetail**
+  
 Return the PK wallet account
+
   
   ```
     seropp.accountDetail(PK,function(account){
@@ -110,7 +116,9 @@ Return the PK wallet account
   ```
 
   - **seropp.executeContract**
-Send a transaction to update smart contract state. It is asynchronous on the block chain. and return transaction hash.   
+  
+Send a transaction to update smart contract state. It is asynchronous on the block chain. and return transaction hash.  
+
   ```
   seropp.executeContract(tx,function(txHash){
       console.log(txHash);
@@ -118,6 +126,7 @@ Send a transaction to update smart contract state. It is asynchronous on the blo
   ```
   
   - **seropp.call**
+  
 It use to get data from gero node . and it will be convert to basic data structure.
   ```
   seropp.call(data,function(rest){
@@ -126,7 +135,9 @@ It use to get data from gero node . and it will be convert to basic data structu
   ```
   
   - seropp.estimateGas
+  
 It use to estimate gas begin send transaction .
+
   ```
   seropp.estimateGas(data,function(gas){
       console.log(gas);
