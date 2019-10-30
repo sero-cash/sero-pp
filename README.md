@@ -29,7 +29,7 @@
 >- seropp.executeContract
 >- seropp.estimateGas
  
-##### seropp.init
+**seropp.init**
 
   It must be inited before invoke other interface.
   
@@ -48,7 +48,7 @@ const dapp = {
         })
 ```
 
-##### seropp.accountList
+
   
   **Account structure**
   
@@ -134,7 +134,7 @@ It use to get data from gero node . and it will be convert to basic data structu
   });
   ```
   
-  - seropp.estimateGas
+  - **seropp.estimateGas**
   
 It use to estimate gas begin send transaction .
 
