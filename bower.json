@@ -1,0 +1,36 @@
+{
+  "name": "popup-js-sdk",
+  "namespace": "popup",
+  "version": "1.0.0",
+  "description": "popup-js-sdk",
+  "main": [
+    "./dist/popup-js-sdk.js",
+    "./dist/popup-js-sdk.min.js"
+  ],
+  "dependencies": {
+    "bignumber.js": ">=2.0.0",
+    "crypto-js": "~3.1.4"
+  },
+  "keywords": [
+    "sero",
+    "contract",
+    "abi"
+  ],
+  "license": "LGPL-3.0",
+  "ignore": [
+    "example",
+    "lib",
+    "node_modules",
+    "package.json",
+    ".versions",
+    ".bowerrc",
+    ".editorconfig",
+    ".gitignore",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "gulpfile.js",
+    "index.js",
+    "**/*.txt"
+  ]
+}
