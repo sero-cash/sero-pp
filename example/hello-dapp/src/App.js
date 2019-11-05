@@ -143,6 +143,10 @@ class App extends Component {
             that.setState({
                 accounts:rest
             })
+
+            seropp.getAccountDetail(rest[0].PK,function (rest) {
+                console.log("account detail:",rest);
+            })
         })
     }
 
