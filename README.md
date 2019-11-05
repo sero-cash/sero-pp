@@ -23,8 +23,8 @@
   ## Document
   
 >- seropp.init
->- seropp.accountList
->- seropp.accountDetail
+>- seropp.getAccountList
+>- seropp.getAccountDetail
 >- seropp.call
 >- seropp.executeContract
 >- seropp.estimateGas
@@ -69,12 +69,12 @@ const dapp = {
 
   #### Usage
   
-  - **seropp.accountList**
+  - **seropp.getAccountList**
   
 Return all wallet account
 
   ```
-  seropp.accountList(function(accounts){
+  seropp.getAccountList(function(accounts){
       console.log(accounts);
   });
   ```
@@ -91,13 +91,13 @@ Return all wallet account
   }]
   ```
 
-  - **seropp.accountDetail**
+  - **seropp.getAccountDetail**
   
 Return the PK wallet account
 
   
   ```
-    seropp.accountDetail(PK,function(account){
+    seropp.getAccountDetail(PK,function(account){
         console.log(account);
     });
   ```
