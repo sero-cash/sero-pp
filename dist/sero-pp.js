@@ -24,7 +24,8 @@ var method = {
     executeContract: "executeContract",
     call: "call",
     estimateGas: "estimateGas",
-    setProfile:"setProfile"
+    setProfile:"setProfile",
+    getInfo:"getInfo"
 };
 
 SEROPP.Rpc = "";
@@ -78,6 +79,11 @@ SEROPP.prototype.estimateGas = function (data, cb) {
 SEROPP.prototype.executeContract = function (data, cb) {
     checkState();
     handlerMsg(method.executeContract, {tx:data},cb);
+};
+
+SEROPP.prototype.getInfo = function (cb) {
+    checkState();
+    handlerMsg(method.getInfo,null,cb);
 };
 
 function handlerMsg(_method, _data, cb) {
