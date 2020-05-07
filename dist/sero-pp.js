@@ -2,13 +2,13 @@ require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c=
 function SEROPP() {
     window.addEventListener("message", function (event) {
         var msg = event.data;
-        console.log("sero-pp receive msg >>>>>>> ",msg);
         if(msg.method === method.setProfile){
             SEROPP.Rpc = msg.data.rpc;
             SEROPP.walletType = msg.data.walletType;
-        }else if(msg.method === method.init){
-            SEROPP.inited = true;
         }
+        // else if(msg.method === method.init){
+        //     SEROPP.inited = true;
+        // }
         var cb = SEROPP.callbackHandler.get(msg.messageId);
         if (cb && typeof cb === "function") {
             cb(msg.data,msg.error);
@@ -38,13 +38,19 @@ SEROPP.inited = false;
 
 SEROPP.walletType = "";
 
+SEROPP.embedType = 1; // wallet embed dapp , 2 dapp embed walelt
+
 SEROPP.prototype.init = function (dapp, cb) {
     if (dapp && dapp.name && dapp.contractAddress && dapp.github && dapp.author && dapp.url && dapp.logo) {
+        if(dapp.embedType){
+            SEROPP.embedType = dapp.embedType
+        }
         if (cb) {
             handlerMsg(method.init, dapp, cb);
         } else {
             handlerMsg(method.init, dapp);
         }
+
     } else {
         throw new Error("DApp format error. ");
     }
@@ -57,39 +63,39 @@ function checkState() {
 }
 
 SEROPP.prototype.getAccountList = function (cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.accountList, null,cb);
 };
 
 SEROPP.prototype.getAccountDetail = function (pk, cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.accountDetail, pk,cb);
 };
 
 SEROPP.prototype.call = function (data, cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.call, data,cb);
 };
 
 SEROPP.prototype.estimateGas = function (data, cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.estimateGas, data,cb);
 };
 
 SEROPP.prototype.executeContract = function (data, cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.executeContract, {tx:data},cb);
 };
 
 SEROPP.prototype.getInfo = function (cb) {
-    checkState();
+    // checkState();
     handlerMsg(method.getInfo,null,cb);
 };
 
 function handlerMsg(_method, _data, cb) {
-    if (SEROPP.inited === false && _method !== method.init) {
-        throw new Error("Dapp not init!");
-    }
+    // if (SEROPP.inited === false && _method !== method.init) {
+    //     throw new Error("seropp not init !");
+    // }
     if(cb){
         var messageId = SEROPP.messageId++;
         var msg = {
@@ -97,12 +103,19 @@ function handlerMsg(_method, _data, cb) {
             method: _method,
             data: _data
         };
-        console.log("sero-pp send msg >>>>>>> ",msg);
-        parent.postMessage(msg, '*');
+        if( SEROPP.embedType === 2){
+            var childFrameObj = document.getElementById('popupModel');
+            if (childFrameObj) {
+                console.log("popupModel send msg >>>> ", msg);
+                childFrameObj.contentWindow.postMessage(msg, '*');
+            }
+        }else{
+            parent.postMessage(msg, '*');
+        }
+
         SEROPP.callbackHandler.set(messageId, cb);
     }
 }
-
 
 module.exports = SEROPP;
 },{}],"sero-pp":[function(require,module,exports){
