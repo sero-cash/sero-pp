@@ -20,7 +20,7 @@
   import seropp from 'sero-pp'
   ```
   
-  ## Document
+  ## APIs
   
 >- seropp.init
 >- seropp.getAccountList
@@ -28,6 +28,7 @@
 >- seropp.call
 >- seropp.executeContract
 >- seropp.estimateGas
+>- seropp.getInfo
  
 **seropp.init**
 
@@ -66,6 +67,8 @@ const dapp = {
   >- `cy` It is short word of currency ,default `SERO`
   >- `gas` It is pay to miner
   >- `gasPrice` Price of gas
+  >- `catg` Catagory of ticket
+  >- `value` Value of ticket
 
   #### Usage
   
