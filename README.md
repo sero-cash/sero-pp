@@ -143,3 +143,11 @@ It use to estimate gas begin send transaction .
       console.log(gas);
   });
   ```
+  
+### Embed Popup wallet using iframe in DApp
+ 
+```
+let walletUrl = 'http://popup-github.sero.cash/?language=en_US';
+<iframe className="popupiframe" src={walletUrl}  frameBorder="no" />
+
+```
