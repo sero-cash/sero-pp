@@ -25,7 +25,8 @@ var method = {
     call: "call",
     estimateGas: "estimateGas",
     setProfile:"setProfile",
-    getInfo:"getInfo"
+    getInfo:"getInfo",
+    pkrCrypto:"pkrCrypto"
 };
 
 SEROPP.Rpc = "";
@@ -90,6 +91,11 @@ SEROPP.prototype.executeContract = function (data, cb) {
 SEROPP.prototype.getInfo = function (cb) {
     // checkState();
     handlerMsg(method.getInfo,null,cb);
+};
+
+SEROPP.prototype.pkrCrypto = function (data,cb) {
+    // checkState();
+    handlerMsg(method.pkrCrypto,data,cb);
 };
 
 function handlerMsg(_method, _data, cb) {
