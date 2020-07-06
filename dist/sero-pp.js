@@ -26,7 +26,9 @@ var method = {
     estimateGas: "estimateGas",
     setProfile:"setProfile",
     getInfo:"getInfo",
-    pkrCrypto:"pkrCrypto"
+    pkrCrypto:"pkrCrypto",
+    pkrEncrypt:"pkrEncrypt",
+    pkrDecrypt:"pkrDecrypt"
 };
 
 SEROPP.Rpc = "";
@@ -98,6 +100,16 @@ SEROPP.prototype.pkrCrypto = function (data,cb) {
     handlerMsg(method.pkrCrypto,data,cb);
 };
 
+SEROPP.prototype.pkrEncrypt = function (data,cb) {
+    // checkState();
+    handlerMsg(method.pkrEncrypt,data,cb);
+};
+
+SEROPP.prototype.pkrDecrypt = function (data,cb) {
+    // checkState();
+    handlerMsg(method.pkrDecrypt,data,cb);
+};
+
 function handlerMsg(_method, _data, cb) {
     // if (SEROPP.inited === false && _method !== method.init) {
     //     throw new Error("seropp not init !");
@@ -112,7 +124,6 @@ function handlerMsg(_method, _data, cb) {
         if( SEROPP.embedType === 2){
             var childFrameObj = document.getElementById('popupModel');
             if (childFrameObj) {
-                console.log("popupModel send msg >>>> ", msg);
                 childFrameObj.contentWindow.postMessage(msg, '*');
             }
         }else{

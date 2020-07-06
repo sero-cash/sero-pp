@@ -1,6 +1,6 @@
 {
   "name": "sero-pp",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Use for develop DApp on sero popup and sero pullup.",
   "main": "./index.js",
   "homepage": ".",

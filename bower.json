@@ -1,7 +1,7 @@
 {
   "name": "popup-js-sdk",
   "namespace": "popup",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "popup-js-sdk",
   "main": [
     "./dist/popup-js-sdk.js",
