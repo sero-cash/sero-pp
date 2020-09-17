@@ -28,7 +28,8 @@ var method = {
     getInfo:"getInfo",
     pkrCrypto:"pkrCrypto",
     pkrEncrypt:"pkrEncrypt",
-    pkrDecrypt:"pkrDecrypt"
+    pkrDecrypt:"pkrDecrypt",
+    goPage:"goPage"
 };
 
 SEROPP.Rpc = "";
@@ -110,26 +111,32 @@ SEROPP.prototype.pkrDecrypt = function (data,cb) {
     handlerMsg(method.pkrDecrypt,data,cb);
 };
 
+
+SEROPP.prototype.goPage = function (data) {
+    handlerMsg(method.goPage,data);
+};
+
 function handlerMsg(_method, _data, cb) {
     // if (SEROPP.inited === false && _method !== method.init) {
     //     throw new Error("seropp not init !");
     // }
-    if(cb){
-        var messageId = SEROPP.messageId++;
-        var msg = {
-            messageId: messageId,
-            method: _method,
-            data: _data
-        };
-        if( SEROPP.embedType === 2){
-            var childFrameObj = document.getElementById('popupModel');
-            if (childFrameObj) {
-                childFrameObj.contentWindow.postMessage(msg, '*');
-            }
-        }else{
-            parent.postMessage(msg, '*');
-        }
 
+    var messageId = SEROPP.messageId++;
+    var msg = {
+        messageId: messageId,
+        method: _method,
+        data: _data
+    };
+    if( SEROPP.embedType === 2){
+        var childFrameObj = document.getElementById('popupModel');
+        if (childFrameObj) {
+            childFrameObj.contentWindow.postMessage(msg, '*');
+        }
+    }else{
+        parent.postMessage(msg, '*');
+    }
+
+    if(cb){
         SEROPP.callbackHandler.set(messageId, cb);
     }
 }
